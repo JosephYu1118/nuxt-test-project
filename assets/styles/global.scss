@@ -1,0 +1,93 @@
+// ====================
+//      FONT
+// ==============================
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&subset=chinese-traditional,japanese');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext');
+
+// ====================
+//      KEYFRAMES
+// ==============================
+@keyframes progressing {
+  0% {
+    stroke-dashoffset: 314 * 4;
+  }
+}
+
+// ====================
+//      RESET
+// ==============================
+html, body, h1, h2, h3, h4, h5, h6, hr, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select, textarea, label {
+  margin: 0;
+}
+
+button {
+  border: 0;
+  background: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+// ====================
+//      ALL
+// ==============================
+* {
+  font-family: 'Ubuntu', 'Noto Sans TC';
+  letter-spacing: 1.5px;
+  line-height: 150%;
+  position: relative;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  background-color: $c-white;
+  color: $c-blue;
+}
+
+// ====================
+//      TRANSITION
+// ==============================
+.page-enter-active, .page-leave-active {
+  transition: opacity 0.3s;
+}
+
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
+
+.page-enter-to, .page-leave {
+  opacity: 1;
+}
+
+.layout-enter-active, .layout-leave-active {
+  transition: opacity 0.3s;
+}
+
+.layout-enter, .layout-leave-active {
+  opacity: 0;
+}
+
+// ====================
+//      DEBUG
+// ==============================
+// * {
+//   border: 1px solid #000;
+// }

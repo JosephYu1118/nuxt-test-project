@@ -1,0 +1,19 @@
+# Nuxt generate
+dist
+
+# dependencies
+node_modules
+
+# Nuxt build
+.nuxt
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Mac OSX
+.DS_Store
+
+# logs
+logs
+*.log
+npm-debug.log*

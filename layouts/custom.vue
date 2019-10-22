@@ -13,6 +13,12 @@ export default {
   components: {
     'the-logo': TheLogo,
     'navigation-bar': NavigationBar
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
   }
 }
 </script>

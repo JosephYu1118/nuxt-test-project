@@ -17,7 +17,7 @@ export default {
   css: [
     '~/assets/styles/global.scss'
   ],
-  loading: { color: '#fff' },
+  loading: '~/components/Loading.vue',
   plugins: [
   ],
   server: {

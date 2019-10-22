@@ -20,6 +20,9 @@ export default {
   loading: { color: '#fff' },
   plugins: [
   ],
+  server: {
+    port: 5000
+  },
   vue: {
     config: {
       productionTip: false

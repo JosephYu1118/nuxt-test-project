@@ -28,6 +28,9 @@ export default {
       productionTip: false
     }
   },
+  devModules: [
+    '@nuxtjs/eslint-module'
+  ],
   modules: [
     '@nuxtjs/style-resources'
   ],
@@ -38,7 +41,16 @@ export default {
   },
   build: {
     // 該擴展方法會被調用兩次，分別在服務端打包構建、與客戶端打包構建之時
-    extend (config, { isClient }) {
+    extend (config, { isDev, isClient }) {
+      // Run ESLint on save
+      if (isDev && isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
       // 為客戶端打包進行擴展配置
       if (isClient) {
         config.devtool = 'eval-source-map'

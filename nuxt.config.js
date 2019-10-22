@@ -19,6 +19,8 @@ export default {
   ],
   loading: '~/components/Loading.vue',
   plugins: [
+    '~/plugins/errorHandler.js',
+    '~/plugins/axios.js'
   ],
   server: {
     port: 5000
@@ -32,8 +34,24 @@ export default {
     '@nuxtjs/eslint-module'
   ],
   modules: [
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/dotenv',
+    '@nuxtjs/axios'
   ],
+  axios: {
+    proxy: true,
+    prefix: '/api',
+    credentials: true
+  },
+  proxy: {
+    '/api/': {
+      target: 'http://127.0.0.1:2001',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': ''
+      }
+    }
+  },
   styleResources: {
     scss: [
       '~/assets/styles/variables.scss'

@@ -1,5 +1,8 @@
 <template lang="pug">
 .container
+  .info-box
+    h3 {{ message }}
+    h3 {{ nytimesArchives.headline.main }}
   #products-list
     .product(v-for="(product, index) in productsList" :key="index")
       h3.title 商品: {{ product.title }}
@@ -18,8 +21,28 @@ import { mapState } from 'vuex'
 
 export default {
   layout: 'custom',
+  loading: false,
+  data: () => ({
+    message: 'This is asyncData message'
+  }),
   computed: {
-    ...mapState('products', ['productsList'])
+    ...mapState('products', ['productsList', 'nytimesArchives'])
+  },
+  asyncData () {
+    // 回傳值將會覆蓋掉 data
+    return { message: 'New York Times Archives' }
+  },
+  async fetch (context) {
+    try {
+      await context.store.dispatch('products/getNytimesArchives')
+    } catch (error) {
+      context.app.$errorHandler(error)
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.finish()
+    })
   }
 }
 </script>
@@ -28,8 +51,15 @@ export default {
 .container {
   min-height: 100vh;
   text-align: center;
-  @include center-flex;
+  @include center-flex(flex-start);
   flex-direction: column;
+  .info-box {
+    margin: 100px 0;
+    padding: 0 50px;
+    h3 {
+      font-size: 30px;
+    }
+  }
   #products-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

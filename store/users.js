@@ -4,25 +4,32 @@ export default {
       {
         id: 27,
         name: 'Joseph',
-        fruit: 'avocado'
+        fruit: 'avocado',
+        isAuthenticated: false
       }, {
         id: 18,
         name: 'Windy',
-        fruit: 'grapefruit'
+        fruit: 'grapefruit',
+        isAuthenticated: false
       }, {
         id: 23,
         name: 'Darren',
-        fruit: 'persimmon'
+        fruit: 'persimmon',
+        isAuthenticated: false
       }, {
         id: 24,
         name: 'Jessica',
-        fruit: 'pomelo'
+        fruit: 'pomelo',
+        isAuthenticated: false
       }
     ]
   }),
   getters: {
   },
   mutations: {
+    UPDATE_AUTHENTICATION (state, payload) {
+      state.usersInfo.find(info => info.id === payload.id).isAuthenticated = payload.value
+    }
   },
   actions: {
   }

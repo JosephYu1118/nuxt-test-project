@@ -22,6 +22,9 @@ export default {
     '~/plugins/errorHandler.js',
     '~/plugins/axios.js'
   ],
+  router: {
+    middleware: 'authenticated'
+  },
   server: {
     port: 5000
   },

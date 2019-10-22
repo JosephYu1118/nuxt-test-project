@@ -9,6 +9,9 @@ import { mapState } from 'vuex'
 
 export default {
   layout: 'custom',
+  meta: {
+    requiresAuth: true
+  },
   validate ({ params, store }) {
     return store.state.users.usersInfo.some(user => user.id === Number(params.id))
   },
@@ -17,6 +20,11 @@ export default {
     user () {
       return this.usersInfo.find(user => user.id === Number(this.$route.params.id))
     }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.finish()
+    })
   }
 }
 </script>
